@@ -1,6 +1,24 @@
 # BERT SMM4H Sentiment Classification
 
-This project fine-tunes `bert-base-uncased` for binary sentiment classification on the SMM4H 2024 Task 5 dataset. The complete workflow is provided in [`BERT_SMM4H.ipynb`](BERT_SMM4H.ipynb).
+## Project overview
+
+This project applies transfer learning to sentiment analysis of short social-media posts from the **Social Media Mining for Health (SMM4H) 2024 Task 5** dataset. The goal is to automatically classify each post into one of two sentiment categories:
+
+- **Negative** (`0`)
+- **Positive** (`1`)
+
+The project uses the pretrained `bert-base-uncased` language model. BERT is well suited to this task because it learns contextual relationships between words rather than treating each word independently. The pretrained model is adapted to the sentiment-classification task by adding a two-class classification head and fine-tuning it on the labeled SMM4H training data.
+
+The notebook provides a complete machine-learning workflow:
+
+1. Load labeled training and validation data from TSV files.
+2. Clean noisy social-media text, including URLs, mentions, hashtags, HTML entities, and extra whitespace.
+3. Convert the cleaned text into BERT-compatible tokens.
+4. Fine-tune BERT using the training dataset.
+5. Evaluate the model on the validation dataset using the F1 score.
+6. Generate predicted sentiment labels and positive-class probabilities.
+
+This project is intended as an educational and experimental baseline for applying transformer-based NLP models to health-related social-media text. It can be extended with additional preprocessing, hyperparameter tuning, larger pretrained models, test-set evaluation, or deployment as a sentiment-prediction service. The complete implementation is available in [`BERT_SMM4H.ipynb`](BERT_SMM4H.ipynb).
 
 ## What the notebook does
 
